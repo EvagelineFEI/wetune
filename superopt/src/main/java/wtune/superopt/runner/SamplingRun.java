@@ -50,7 +50,7 @@ public class SamplingRun implements Runner {
   private void runAll() {
     final List<Fragment> templates = FragmentSupport.enumFragments();
     final int numTemplates = templates.size();
-    final int totalPairs = (numTemplates * (numTemplates + 1)) >> 1;
+    final int totalPairs = (numTemplates * (numTemplates + 1)) >> 1;  // 这是一个组合公式, 用于计算从 numTemplates 个元素中选择 2 个元素的所有组合
 
     latch = new CountDownLatch(totalPairs);
     threadPool = Executors.newFixedThreadPool(parallelism);
@@ -58,7 +58,7 @@ public class SamplingRun implements Runner {
     try (final ProgressBar pb = new ProgressBar("Samples", totalPairs)) {
       progressBar = pb;
 
-      for (int i = 0; i < numTemplates; ++i) {
+      for (int i = 0; i < numTemplates; ++i) {     // 进行<q_src, q_dest>的组合
         for (int j = i; j < numTemplates; ++j) {
           final Fragment f0 = templates.get(i), f1 = templates.get(j);
           threadPool.submit(() -> enumerate(f0, f1));
