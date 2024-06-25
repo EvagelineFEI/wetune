@@ -294,14 +294,14 @@ public class EnumRule implements Runner {
       FragmentSupport.setupFragment(f1);
     }
 
-    try {
+    try {  // rule存储枚举出的约束
       final List<Substitution> rules =
           !useSpes ? enumConstraints(f0, f1, timeout) : enumConstraintsSPES(f0, f1, timeout);
       if (rules == null) {
         numSkipped.incrementAndGet();
         return;
       }
-
+      // 将rules列表中的每个Substitution对象转换为字符串并存储在serializedRules列表中。
       final List<String> serializedRules = map(rules, Substitution::toString);
 
       outLock.lock();
