@@ -3,7 +3,7 @@ package wtune.superopt.fragment;
 import wtune.common.utils.TreeContext;
 
 import java.util.List;
-
+// 提供了创建和合并符号集合的方法
 public interface Symbols extends TreeContext<Symbols> {
   int size();
 
