@@ -40,7 +40,7 @@ class FragmentEnumerator {
     if (depth >= maxOps) return fragments;
 
     final Set<FragmentImpl> newFragments = new HashSet<>();
-    for (FragmentImpl g : fragments)
+    for (FragmentImpl g : fragments)    // 遍历所有的fragment,然后用操作符填充“hole”
       for (Hole<Op> hole : FragmentUtils.gatherHoles(g))
         for (Op template : opSet)
           if (hole.fill(template)) {
