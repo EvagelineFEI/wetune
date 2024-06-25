@@ -1,7 +1,7 @@
 package wtune.superopt.fragment;
 
 import wtune.common.utils.Copyable;
-
+// 支持创建、复制、解析和字符串表示 Fragment 对象
 public interface Fragment extends Copyable<Fragment> {
   int id();
 
