@@ -61,7 +61,7 @@ public class SamplingRun implements Runner {
       for (int i = 0; i < numTemplates; ++i) {     // 进行<q_src, q_dest>的组合
         for (int j = i; j < numTemplates; ++j) {
           final Fragment f0 = templates.get(i), f1 = templates.get(j);
-          threadPool.submit(() -> enumerate(f0, f1));
+          threadPool.submit(() -> enumerate(f0, f1));  // 里面调用 enumerateConstraint,为规则枚举最小约束集
         }
       }
 
